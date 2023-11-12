@@ -1,0 +1,19 @@
+{
+    "domain": "amazon_cloudwatch",
+    "name": "Amazon CloudWatch",
+    "codeowners": [
+        "@Mallonbacka"
+    ],
+    "config_flow": true,
+    "dependencies": [],
+    "documentation": "https://github.com/Mallonbacka/custom-component-cloudwatch/blob/main/README.md",
+    "homekit": {},
+    "iot_class": "cloud_push",
+    "issue_tracker": "https://github.com/Mallonbacka/custom-component-cloudwatch/issues/",
+    "requirements": [
+        "boto3"
+    ],
+    "ssdp": [],
+    "version": "1.0.0",
+    "zeroconf": []
+}

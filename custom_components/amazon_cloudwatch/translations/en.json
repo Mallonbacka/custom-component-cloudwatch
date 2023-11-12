@@ -1,0 +1,44 @@
+{
+    "config": {
+        "step": {
+            "user": {
+                "data": {
+                    "aws_region": "AWS region",
+                    "aws_access_key_id": "AWS access key ID",
+                    "aws_secret_access_key": "AWS secret access key"
+                },
+                "data_description": {
+                    "aws_region": "In the format 'us-east-1'"
+                }
+            }
+        },
+        "error": {
+            "cannot_connect": "[%key:common::config_flow::error::cannot_connect%]",
+            "invalid_auth": "[%key:common::config_flow::error::invalid_access_token%]",
+            "unknown": "[%key:common::config_flow::error::unknown%]"
+        },
+        "abort": {
+            "already_configured": "[%key:common::config_flow::abort::already_configured_device%]"
+        }
+    },
+    "services": {
+        "put_metric_data": {
+            "name": "Put metric data",
+            "description": "Writes the metric data to Amazon CloudWatch",
+            "fields": {
+                "namespace": {
+                    "name": "Namespace",
+                    "description": "The namespace of the metric in Amazon CloudWatch"
+                },
+                "metric_name": {
+                    "name": "Metric name",
+                    "description": "The name of the metric to be reported"
+                },
+                "value": {
+                    "name": "Value",
+                    "description": "The value to be written"
+                }
+            }
+        }
+    }
+}
