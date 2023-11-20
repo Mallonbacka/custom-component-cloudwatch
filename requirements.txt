@@ -4,5 +4,5 @@ pip>=21.0,<23.4
 ruff==0.1.5
 
 # https://github.com/home-assistant/core/issues/95192
-urllib3>=1.26.5,<2
+urllib3>=1.26.5,<3
 botocore @ git+https://github.com/boto/botocore
