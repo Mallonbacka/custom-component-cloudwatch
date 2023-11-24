@@ -7,9 +7,7 @@
                     "aws_access_key_id": "AWS access key ID",
                     "aws_secret_access_key": "AWS secret access key"
                 },
-                "data_description": {
-                    "aws_region": "In the format 'us-east-1'"
-                }
+                "data_description": {}
             }
         },
         "error": {
