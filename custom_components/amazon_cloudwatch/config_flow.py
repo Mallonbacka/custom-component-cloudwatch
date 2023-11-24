@@ -11,7 +11,7 @@ from homeassistant.core import HomeAssistant
 from homeassistant.data_entry_flow import FlowResult
 from homeassistant.exceptions import HomeAssistantError
 
-from .const import DOMAIN
+from .const import DOMAIN, SUPPORTED_REGIONS
 
 import boto3
 import botocore
@@ -20,7 +20,7 @@ _LOGGER = logging.getLogger(__name__)
 
 STEP_USER_DATA_SCHEMA = vol.Schema(
     {
-        vol.Required("aws_region"): str,
+        vol.Required("aws_region"): vol.In(SUPPORTED_REGIONS),
         vol.Required("aws_access_key_id"): str,
         vol.Required("aws_secret_access_key"): str,
     }
@@ -39,13 +39,8 @@ async def validate_input(hass: HomeAssistant, data: dict[str, Any]) -> dict[str,
 
     Data has the keys from STEP_USER_DATA_SCHEMA with values provided by the user.
     """
-    # TODO validate the data can be used to set up a connection.
-
-    # If your PyPI package is not built with async, pass your methods
-    # to the executor:
-    # await hass.async_add_executor_job(
-    #     your_validate_func, data["username"], data["password"]
-    # )
+    # This only checks that the credentials are valid, not that they
+    # can write to CloudWatch
 
     try:
         caller = await hass.async_add_executor_job(check_aws_credentials,
@@ -63,8 +58,6 @@ async def validate_input(hass: HomeAssistant, data: dict[str, Any]) -> dict[str,
 
 class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     """Handle a config flow for Amazon CloudWatch."""
-
-    VERSION = 1
 
     async def async_step_user(
         self, user_input: dict[str, Any] | None = None
