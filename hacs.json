@@ -1,4 +1,6 @@
 {
     "name": "Amazon CloudWatch",
-    "render_readme": true
+    "render_readme": true,
+    "zip_release": true,
+    "filename": "custom_component_cloudwatch.zip"
 }
