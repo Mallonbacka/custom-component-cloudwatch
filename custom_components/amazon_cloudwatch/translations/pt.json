@@ -1,0 +1,42 @@
+{
+    "config": {
+        "step": {
+            "user": {
+                "data": {
+                    "aws_region": "Região AWS",
+                    "aws_access_key_id": "ID de chave de acesso AWS",
+                    "aws_secret_access_key": "Chave de acesso secreta AWS"
+                },
+                "data_description": {}
+            }
+        },
+        "error": {
+            "cannot_connect": "[%key:common::config_flow::error::cannot_connect%]",
+            "invalid_auth": "[%key:common::config_flow::error::invalid_access_token%]",
+            "unknown": "[%key:common::config_flow::error::unknown%]"
+        },
+        "abort": {
+            "already_configured": "[%key:common::config_flow::abort::already_configured_device%]"
+        }
+    },
+    "services": {
+        "put_metric_data": {
+            "name": "Enviar dados de métrica",
+            "description": "Escreve os dados de métrica no Amazon CloudWatch",
+            "fields": {
+                "namespace": {
+                    "name": "Espaço de Nomes",
+                    "description": "O espaço de nomes da métrica no Amazon CloudWatch"
+                },
+                "metric_name": {
+                    "name": "Nome da métrica",
+                    "description": "O nome da métrica a ser reportada"
+                },
+                "value": {
+                    "name": "Valor",
+                    "description": "O valor a ser escrito"
+                }
+            }
+        }
+    }
+}
